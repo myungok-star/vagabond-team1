@@ -11,6 +11,6 @@ get '/logout' => 'sessions#destroy'
 get '/signup' => 'users#new'
 post '/users' => 'users#create'
 
-get '/profile' => 'users#show'
+get '/users/:id', to: "users#show", as: "user"
 
 end
