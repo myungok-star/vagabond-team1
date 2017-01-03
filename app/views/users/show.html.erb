@@ -1,2 +1,6 @@
 <h1>this is users#show method in UsersController</h1>
-<%= image_tag("rss.jpg", :alt => "rss feed") %>
+<img src="<%= @user.image %>">
+<p>Name: <%= @user.name %></p>
+<p>Date joined: <%=@user.created_at%></p>
+<p>Current city: <%=@user.current_city%></p>
+<%=button_to "Edit Profile", user_path(@user)%>
