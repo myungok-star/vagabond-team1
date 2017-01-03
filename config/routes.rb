@@ -12,4 +12,6 @@ get '/logout' => 'sessions#destroy'
 get '/signup' => 'users#new'
 post '/users' => 'users#create'
 
+get '/profile' => 'users#show'
+
 end
