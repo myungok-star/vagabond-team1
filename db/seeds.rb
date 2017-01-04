@@ -11,20 +11,38 @@
 City.destroy_all
 Post.destroy_all
 
-user = User.last
-user.posts.create([
-  {title: "San Francisco",
-    content: "Awesome"},
-  {title: "New York",
-    content: "Beautiful"},
-    {title: "Hong Kong",
-      content: "Delicious food"},
-      {title: "Los Angeles",
-      content: "Awful traffic!"}
-  ]);
+# user = User.last
+# user.posts.create([
+#   {title: "San Francisco",
+#     content: "Awesome"},
+#   {title: "New York",
+#     content: "Beautiful"},
+#     {title: "Hong Kong",
+#       content: "Delicious food"},
+#       {title: "Los Angeles",
+#       content: "Awful traffic!"}
+#   ]);
+
+# Post.create([
+#     {title: "San Francisco",
+#       content: "Awesome"},
+#     {title: "New York",
+#       content: "Beautiful"},
+#       {title: "Hong Kong",
+#         content: "Delicious food"},
+#         {title: "Los Angeles",
+#         content: "Awful traffic!"}
+#     ]);
+# user.posts << Post.last
 
 City.create({
   name: "San Francisco",
   image: "http://images.unsplash.com/photo-1414005987108-a6d06de8769f"
 
   });
+
+user = User.last
+city = City.last
+post = user.posts.create({title: "San Francisco",
+      content: "Awesome",
+      city_id: city.id})

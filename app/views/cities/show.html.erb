@@ -6,4 +6,14 @@
   </div>
 </nav>
 
-<img src="<%= @city.image %>">
+<img src="<%= @city.image %>" style="width:200px; height:200px">
+
+<div class="col-md-8 col-md-offset-2">
+  <% @posts.each do |post| %>
+<div class="row">
+  <h2><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
+  <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
+</div>
+  <% end %>
+
+</div>
