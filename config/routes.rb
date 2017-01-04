@@ -17,5 +17,5 @@ get '/users/:id/edit', to: "users#edit", as: "edit_user"
 # put '/users/:id', to: "users#update"
 put '/users/:id', to: "users#update", as: "user_update"
 
-get '/users/:id/posts/:post_id', to: 'users#show_post', as: "post"
+get '/users/:user_id/posts/:id', to: 'users#show_post', as: "post"
 end
