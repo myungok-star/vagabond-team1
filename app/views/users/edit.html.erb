@@ -1,0 +1,9 @@
+<%= form_for :user, url: user_update_path, method: :put do |f| %>
+
+  Name: <%= f.text_field :name %>
+  Current City: <%= f.text_field :current_city %>
+  Image: <%= f.text_field :image %>
+
+  <%= f.submit "Submit"%>
+
+<% end %>

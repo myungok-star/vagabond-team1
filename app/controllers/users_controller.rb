@@ -19,6 +19,21 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+    # name_param = params.require(:user).permit(:name)
+    if @user.update_attributes(user_params)
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
+
+  end
+
 private
 
   def user_params
