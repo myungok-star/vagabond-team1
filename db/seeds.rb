@@ -8,6 +8,7 @@
 
 # User.destroy_all
 
+City.destroy_all
 Post.destroy_all
 
 user = User.last
@@ -19,5 +20,11 @@ user.posts.create([
     {title: "Hong Kong",
       content: "Delicious food"},
       {title: "Los Angeles",
-      content: "Awful traffic!"} 
+      content: "Awful traffic!"}
   ]);
+
+City.create({
+  name: "San Francisco",
+  image: "http://images.unsplash.com/photo-1414005987108-a6d06de8769f"
+
+  });
