@@ -11,6 +11,13 @@
 Post.destroy_all
 
 user = User.last
-user.posts.create(
-  {title: "Hello!", content: "Hey I'm vlad"}
-  );
+user.posts.create([
+  {title: "San Francisco",
+    content: "Awesome"},
+  {title: "New York",
+    content: "Beautiful"},
+    {title: "Hong Kong",
+      content: "Delicious food"},
+      {title: "Los Angeles",
+      content: "Awful traffic!"} 
+  ]);
