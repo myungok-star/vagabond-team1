@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find_by_id(params[:id])
     @posts = @user.posts
   end
 
@@ -32,6 +32,11 @@ class UsersController < ApplicationController
       render 'edit'
     end
 
+  end
+
+  def show_post
+    @post = Post.find(params[:id])
+    @user = @post.user
   end
 
 private
