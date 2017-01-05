@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <p> <%= @city.name %></p>
+      <%=button_to "Add New Post", new_post_path, method: :get%>
     </div>
   </div>
 </nav>
