@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def edit_post
+    @post = Post.find_by_id(params[:id])
+  end
+
   def update
     @user = User.find_by_id(params[:id])
     # name_param = params.require(:user).permit(:name)

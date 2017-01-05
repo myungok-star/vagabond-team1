@@ -5,13 +5,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    # alert
     user = current_user
-    # city = City.find(params[:id])
     post = user.posts.create({title: post_params[:title], content: post_params[:content], city_id: params[:id]})
-    # post = city.posts.create(post_params
 
     redirect_to post_path(user_id: current_user.id, id: post.id)
+  end
+
+  def update_post
+    post = Post.find_by_id(params[:id])
+    post.update_attributes(post_params)
+    redirect_to user_path
   end
 
   private
