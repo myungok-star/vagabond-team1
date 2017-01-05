@@ -23,5 +23,6 @@ get '/cities/:id', to: "cities#show", as: "city"
 
 get '/cities/:id/post/new', to: "posts#new", as: "new_post"
 post '/cities/:id/post/new', to: "posts#create"
+post '/users/:user_id/posts/:id/edit', to: "posts#update_post"
 
 end
