@@ -17,11 +17,11 @@ get '/users/:id/edit', to: "users#edit", as: "edit_user"
 # put '/users/:id', to: "users#update"
 put '/users/:id', to: "users#update", as: "user_update"
 get '/users/:user_id/posts/:id', to: 'users#show_post', as: "post"
+get '/users/:user_id/posts/:id/edit', to: "users#edit_post", as:"edit_post"
 
 get '/cities/:id', to: "cities#show", as: "city"
 
 get '/cities/:id/post/new', to: "posts#new", as: "new_post"
 post '/cities/:id/post/new', to: "posts#create"
-
 
 end
