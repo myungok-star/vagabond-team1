@@ -3,7 +3,22 @@
     <div class="navbar-header">
       <p> <%= @city.name %></p>
       <%=button_to "Add New Post", new_post_path, method: :get%>
+
+
+      <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
+        <% @cities.each do |city| %>
+          <%if city.id == request.original_url.split("/")[-1].to_i%>
+            <option value="<%=city.id%>" selected><%=city.name%></option>
+          <%else%>
+            <option value="<%=city.id%>"><%=city.name%></option>
+          <%end%>
+        <% end %>
+      </select>
+
     </div>
+
+  </div>
+
   </div>
 </nav>
 
@@ -16,5 +31,6 @@
   <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
 </div>
   <% end %>
+
 
 </div>
