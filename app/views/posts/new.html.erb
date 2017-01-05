@@ -1,7 +1,10 @@
 <h2>new post </h2>
 
-<%= form_for :post do |f| %>
 
+<%= form_for :post do |f| %>
+<div class="col-md-12 text-danger">
+  <%=flash[:error] %>
+</div>
   Title: <%= f.text_field :title %>
   Content: <%= f.text_area :content %>
   <%= f.submit "Submit" %>

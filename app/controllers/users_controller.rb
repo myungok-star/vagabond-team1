@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include UsersHelper
+  before_action :authorize, except: [:new, :create]
 
   def new
     @user = User.new
@@ -10,6 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
+      flash[:error] = user.errors.full_messages[0]
       redirect_to '/signup'
     end
   end
@@ -23,10 +26,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def edit_post
-    @post = Post.find_by_id(params[:id])
-  end
-
   def update
     @user = User.find_by_id(params[:id])
     # name_param = params.require(:user).permit(:name)
@@ -35,13 +34,16 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-
   end
 
-  def show_post
-    @post = Post.find(params[:id])
-    @user = @post.user
-  end
+    def edit_post
+      @post = Post.find_by_id(params[:id])
+    end
+
+    def show_post
+      @post = Post.find(params[:id])
+      @user = @post.user
+    end
 
 private
 

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.destroy_all
+require 'ffaker'
 
 City.destroy_all
 Post.destroy_all
@@ -38,12 +38,27 @@ Post.destroy_all
 City.create([{
   name: "San Francisco",
   image: "http://images.unsplash.com/photo-1414005987108-a6d06de8769f"
-
   },
   {
     name: "London",
-    image: "http://images.unsplash.com/photo-1414005987108-a6d06de8769f"
-  }
+    image: "https://images.unsplash.com/photo-1473896100090-53523650d4c6"
+  },
+  {
+    name: "Gibraltar",
+    image: "https://images.unsplash.com/photo-1468618367903-e50d699d4f78"
+    },
+    {
+      name: "Seoul",
+      image: "http://www.travelingeast.com/wp-content/uploads/2013/09/Seoul.jpg"
+      },
+      {
+        name: "Chengdu",
+        image: "https://images.unsplash.com/photo-1462803966231-b88ec09ff42a"
+        },
+        {
+          name: "Kharkov",
+          image: "http://www.lea-shans.kharkov.ua/articles/img/pics/uzhd.jpg"
+          }
   ]);
 
 user = User.last
