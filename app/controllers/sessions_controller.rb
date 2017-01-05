@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+  # TODO: use flash messaging to let the user know if they entered the wrong username/password
   user = User.find_by_email(params[:email])
   # If the user exists AND the password entered is correct.
   if user && user.authenticate(params[:password])
@@ -15,8 +16,12 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     redirect_to user_path(user)
   else
-  # If user's login doesn't work, send them back to the login form.
-    redirect_to '/login'
+
+  # use flash messaging to let the user know if they entered the wrong username/password
+  flash[:error] = "Something is wrong!"
+   redirect_to '/login'
+   # If user's login doesn't work, send them back to the login form.
+
   end
 end
 
