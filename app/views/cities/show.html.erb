@@ -29,8 +29,24 @@
 <div class="row">
   <h2><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
   <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
+
+  <div class="">
+    <%post.comments.each do |comment|%>
+    <div class="row">
+      <img src="<%=comment.user_profile_image%>" style='width:50px; height:50px; float: left'>
+      <p><%=comment.content%></p>
+    </div>
+    <br>
+    <%end%>
+  </div>
+
+  <div class="">
+    <img src="<%=current_user.image%>" style='width:50px; height:50px; float: left'>
+    <%= form_for :comment, url: post_comment_path(post) do |f| %>
+      <%=f.text_field :content, :placeholder => "Leave your comment"%>
+      <%=f.submit "Comment", class: "btn btn-primary"%>
+    <%end%>
+  </div>
 </div>
   <% end %>
-
-
 </div>

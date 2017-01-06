@@ -63,7 +63,7 @@ City.create([{
 
 user = User.last
 city1 = City.last
-city2 = City.first
+# city2 = City.first
 post = user.posts.create([{title: "San Francisco",
       content: "Awesome",
       city_id: city1.id},
