@@ -12,13 +12,21 @@
 <%= render partial: 'users/partials/user_info', locals: {user: @user} %>
 
 
-  <div class="col-md-8">
-    <% @posts.each do |post| %>
-    <div class="row">
-      <h2><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
-      <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
-      <%=button_to "Edit Post", edit_post_path(post), method: :get, class: "btn btn-danger", form: {style: 'display:inline-block;'}%>
-      <%=button_to "Delete Post", delete_post_path(user_id:post.user_id, id:post.id), method: :delete, data: {confirm: "Are you sure you want to delete #{post.title}?"}, class: "btn btn-danger", form: {style: 'display:inline-block;'}%>
-    </div>
-    <% end %>
+<div class="col-md-8">
+  <div class="col-md-12 text-info">
+    <%=flash[:error] %>
   </div>
+  <% @posts.each do |post| %>
+<div class="row">
+  <h2><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
+  <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
+  <%=button_to "Edit Post", edit_post_path(post), method: :get%>
+  <%=button_to "Delete Post", delete_post_path(user_id:post.user_id, id:post.id), method: :delete, data: {confirm: "Are you sure you want to delete #{post.title}?"}%>
+</div>
+  <% end %>
+
+<%=button_to "Go to cities page", city_path(City.first), method: :get%>
+
+
+</div>
+

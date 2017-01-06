@@ -12,6 +12,13 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <hr>
+              <h2>Log In</h2>
+          </br>
+          <div class="col-md-12 text-danger">
+            <%=flash[:error] %>
+          </div>
+           </br>
+
             <%= form_tag '/login' do %>
             <div class = "form-group">
             <%= text_field_tag :email, "", class: "form-control", placeholder: "Email"  %>
@@ -28,4 +35,4 @@
         </div>
       </div>
     </div>
-  </div>
+
