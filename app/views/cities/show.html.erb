@@ -1,13 +1,20 @@
-<nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <p> <%= @city.name %></p>
-      <%=button_to "Add New Post", new_post_path, method: :get%>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+  <div class="row" style="height: 400px; background-image: url(<%= @city.image %>); background-position: center; background-size: cover">
+    <h1 class="city-name"><%=@city.name%></h1>
+    <div class="navbar div-footer">
+      <div class="container">
+        <br>
+      <%=button_to "Add New Post", new_post_path, method: :get, class: "btn btn-danger pull-right form: {style: 'display:inline-block;'}"%>
+      </div>
     </div>
   </div>
-</nav>
-
-<img src="<%= @city.image %>" style="width:200px; height:200px">
 
 <div class="col-md-8 col-md-offset-2">
   <% @posts.each do |post| %>
