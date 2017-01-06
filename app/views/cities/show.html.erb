@@ -10,7 +10,7 @@
         <br>
       <%=button_to "Add New Post", new_post_path, method: :get, class: "btn btn-danger pull-right form: {style: 'display:inline-block;'}"%>
       <%=button_to "Go Back to Profile", user_path, method: :get, class: "btn btn-info pull-right form: {style: 'display:inline-block;'}"%>
-      <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
+      <select name="select" id="soflow" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
         <% @cities.each do |city| %>
           <%if city.id == request.original_url.split("/")[-1].to_i%>
             <option value="<%=city.id%>" selected><%=city.name%></option>
