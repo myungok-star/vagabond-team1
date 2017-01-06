@@ -33,6 +33,7 @@
               <div class = "form-group">
             <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm your password" %>
             </div>
+            <%= f.hidden_field :image, :value => "http://img.photobucket.com/albums/v405/Heracross/Team%20Rocket/Culture.jpg" %>
             <div class = "form-group">
               <hr>
             <%= f.submit "Submit", class: "btn btn-danger"%>
