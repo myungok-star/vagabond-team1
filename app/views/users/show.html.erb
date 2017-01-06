@@ -12,21 +12,32 @@
 <%= render partial: 'users/partials/user_info', locals: {user: @user} %>
 
 
-<div class="col-md-8">
-  <div class="col-md-12 text-info">
-    <%=flash[:error] %>
+<%=button_to "Explore Cities", city_path(City.first), method: :get, class: "btn btn-info"%>
+
+<div class="wrapper-md">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="blog-post">
+          <%=flash[:error] %>
+        </div>
+        <% @posts.each do |post| %>
+        <div class="panel">
+        <div class="wrapper-lg">
+          <h2 class="m-t-none"><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
+          <div>
+            <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
+          </div>
+          <%=button_to "Edit Post", edit_post_path(post), method: :get, class: "btn btn-info btn-sm", form: {style: 'display:inline-block;'}%>
+          <%=button_to "Delete Post", delete_post_path(user_id:post.user_id, id:post.id), method: :delete, class: "btn btn-danger btn-sm", form: {style: 'display:inline-block;'}, data: {confirm: "Are you sure you want to delete #{post.title}?"}%>
+          <div class="line line-lg b-b b-light"></div>
+          <div class="text-muted">
+            <i class="fa fa-user text-muted"></i> by <%= @user.name %>
+            <i class="fa fa-clock-o text-muted"></i>  <%= @user.created_at %>
+            <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> 4 comments</a>
+          </div>
+        </div>
+        </div>
+        <% end %>
   </div>
-  <% @posts.each do |post| %>
-<div class="row">
-  <h2><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
-  <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
-  <%=button_to "Edit Post", edit_post_path(post), method: :get%>
-  <%=button_to "Delete Post", delete_post_path(user_id:post.user_id, id:post.id), method: :delete, data: {confirm: "Are you sure you want to delete #{post.title}?"}%>
 </div>
-  <% end %>
-
-<%=button_to "Go to cities page", city_path(City.first), method: :get%>
-
-
 </div>
-

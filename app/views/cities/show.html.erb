@@ -7,24 +7,20 @@
 
 
   <div class="row" style="height: 400px; background-image: url(<%= @city.image %>); background-position: center; background-size: cover">
-    <h1 class="city-name"><%=@city.name%></h1>
+    <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
+      <% @cities.each do |city| %>
+        <%if city.id == request.original_url.split("/")[-1].to_i%>
+          <option value="<%=city.id%>" selected><%=city.name%></option>
+        <%else%>
+          <option value="<%=city.id%>"><%=city.name%></option>
+        <%end%>
+      <% end %>
+    </select>
     <div class="navbar div-footer">
       <div class="container">
         <br>
       <%=button_to "Add New Post", new_post_path, method: :get, class: "btn btn-danger pull-right form: {style: 'display:inline-block;'}"%>
       </div>
-
-
-      <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
-        <% @cities.each do |city| %>
-          <%if city.id == request.original_url.split("/")[-1].to_i%>
-            <option value="<%=city.id%>" selected><%=city.name%></option>
-          <%else%>
-            <option value="<%=city.id%>"><%=city.name%></option>
-          <%end%>
-        <% end %>
-      </select>
-
 
     </div>
 

@@ -10,5 +10,26 @@
 
 <%= render partial: 'users/partials/user_info', locals: {user: @user} %>
 
-<h2><%= @post.title %></h2>
-<p><%= @post.content %></p>
+
+<div class="wrapper-md">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="blog-post">
+        <div class="panel">
+        <div class="wrapper-lg">
+          <h2 class="m-t-none"><%= @post.title %></h2>
+          <div>
+            <p><%= @post.content %></p>
+          </div>
+          <div class="line line-lg b-b b-light"></div>
+          <div class="text-muted">
+            <i class="fa fa-user text-muted"></i> by <%= @user.name %>
+            <i class="fa fa-clock-o text-muted"></i>  <%= @user.created_at %>
+            <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> 4 comments</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
