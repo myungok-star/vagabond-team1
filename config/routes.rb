@@ -27,4 +27,7 @@ post '/cities/:id/post/new', to: "posts#create"
 post '/users/:user_id/posts/:id/edit', to: "posts#update_post"
 delete '/users/:user_id/posts/:id', to: "posts#destroy", as: "delete_post"
 
+post "/posts/:id/comment/new", to: "comments#create", as: "post_comment"
+
+
 end
