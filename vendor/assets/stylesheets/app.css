@@ -848,6 +848,11 @@ body {
   border-radius: 0;
 }
 
+#header{
+  background: #fff;
+  z-index: 0;
+}
+
 .navbar .navbar-form-sm {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -3732,7 +3737,8 @@ fieldset[disabled] .i-checks input + i:before {
 }
 
 .bg-white-only {
-  background-color: #fff;
+  height: 100vh;
+
 }
 
 .bg-white-opacity {
