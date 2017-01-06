@@ -25,11 +25,13 @@ ActiveRecord::Schema.define(version: 20170105232307) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
+    t.integer  "user_id"
     t.string   "user_profile_image"
     t.string   "content"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
