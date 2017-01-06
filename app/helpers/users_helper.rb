@@ -15,6 +15,12 @@ module UsersHelper
     end
   end
 
+  def if_logged_in
+    if current_user
+      redirect_to user_path(current_user)
+    end
+  end
+
   private
   def flash_message
     flash[:error] = "You have to log in first!"
