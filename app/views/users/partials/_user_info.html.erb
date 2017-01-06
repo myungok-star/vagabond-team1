@@ -1,8 +1,49 @@
-<div class="row">
-  <div class="col-md-4">
-<img src="<%= @user.image %>">
-<p>Name: <%= @user.name %></p>
-<p>Date joined: <%=@user.created_at.getlocal%></p>
-<p>Current city: <%=@user.current_city%></p>
-<%=button_to "Edit Profile", edit_user_path, method: :get%>
-</div>
+
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <br>
+      <br>
+      <br>
+      <div class="panel-body">
+        <div class="clearfix text-center m-t">
+          <div class="inline">
+              <div class="thumb-xl avatar m-t-n-xxl">
+                <img src="<%= @user.image %>" class="img-circle">
+              </div>
+              <br>
+            <div class="h4 m-t m-b-xs"><%= @user.name %></div>
+            <br>
+            <div><small class="text-muted m-b"><%=@user.current_city%></small></div>
+            <br>
+            <small class="text-muted m-b">  <%=@user.created_at.getlocal%></small>
+            <br>
+            <br>
+            <%=button_to "Edit My Profile", edit_user_path, method: :get, class: "btn btn-danger"%>
+            <br>
+          </div>
+        </div>
+      </div>
+      <footer class="panel-footer bg-danger text-center no-padder">
+        <div class="row no-gutter">
+          <div class="col-xs-4">
+            <div class="wrapper">
+              <span class="m-b-xs h3 block text-white">245</span>
+              <small class="text-muted">Followers</small>
+            </div>
+          </div>
+          <div class="col-xs-4 dk">
+            <div class="wrapper">
+              <span class="m-b-xs h3 block text-white">55</span>
+              <small class="text-muted">Following</small>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="wrapper">
+              <span class="m-b-xs h3 block text-white">2,035</span>
+              <small class="text-muted">Posts</small>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>

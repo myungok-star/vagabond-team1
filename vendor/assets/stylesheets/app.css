@@ -1,4 +1,4 @@
-/* 
+/*
 
 */
 
@@ -4723,6 +4723,20 @@ a.text-#000000:hover {
 .avatar i.right {
   right: 0;
   left: auto;
+}
+
+.div-footer{
+  height: 70px;
+  margin-top: 280px;
+  background: rgba(0,0,0, .5);
+}
+
+.city-name{
+  height: 50px;
+  color: black;
+  margin-top: 0;
+  margin-left: 80%;
+  padding-top: 30px;
 }
 
 .avatar i.bottom {
