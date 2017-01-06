@@ -7,51 +7,75 @@
 
 
   <div class="row" style="height: 400px; background-image: url(<%= @city.image %>); background-position: center; background-size: cover">
-    <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
-      <% @cities.each do |city| %>
-        <%if city.id == request.original_url.split("/")[-1].to_i%>
-          <option value="<%=city.id%>" selected><%=city.name%></option>
-        <%else%>
-          <option value="<%=city.id%>"><%=city.name%></option>
-        <%end%>
-      <% end %>
-    </select>
+    <h1 class="city-name"><%=@city.name%></h1>
     <div class="navbar div-footer">
       <div class="container">
         <br>
       <%=button_to "Add New Post", new_post_path, method: :get, class: "btn btn-danger pull-right form: {style: 'display:inline-block;'}"%>
       </div>
 
+      <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
+        <% @cities.each do |city| %>
+          <%if city.id == request.original_url.split("/")[-1].to_i%>
+            <option value="<%=city.id%>" selected><%=city.name%></option>
+          <%else%>
+            <option value="<%=city.id%>"><%=city.name%></option>
+          <%end%>
+        <% end %>
+      </select>
     </div>
-
   </div>
 
-<div class="col-md-8 col-md-offset-2">
-  <% @posts.each do |post| %>
-<div class="row">
-  <h2><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
-  <p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p>
-
-  <div class="">
-    <%post.comments.each do |comment|%>
+  <div class="wrapper-md">
     <div class="row">
-      <img src="<%=comment.user_profile_image%>" style='width:50px; height:50px; float: left'>
-      <p><%=comment.content%></p>
-      <%if current_user == User.find_by_id(comment.user_id)%>
-      <%=button_to "Delete", delete_comment_path(post_id:comment.post_id, id: comment.id ), method: :delete, data: {confirm: "Are you sure you want to delete your comment?"}, class: "btn btn-danger", form: {style: 'display:inline-block;'}%>
-      <%end%>
-    </div>
+      <div class="col-sm-8 offset-2">
+        <% @posts.each do |post| %>
+        <div class="panel">
+          <div class="wrapper-lg">
+            <h2 class="m-t-none"><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
+            <div><p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p></div>
+            <div class="line line-lg b-b b-light"></div>
+            <div class="text-muted">
+              <i class="fa fa-user text-muted"></i> by <%= post.user.name %>
+              <i class="fa fa-clock-o text-muted"></i>  <%= post.created_at %>
+              <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> <%=post.comments.count%> comments</a>
+            </div>
+
+    <h4 class="m-t-lg m-b">Comments</h4>
+      <div>
+        <%post.comments.each do |comment|%>
+        <div>
+          <a class="pull-left thumb-sm">
+            <img src="<%=comment.user_profile_image%>" style='width:50px; height:50px'>
+          </a>
+          <div class="m-l-xxl m-b">
+            <div>
+              <a href><strong>John smith</strong></a>
+              <span class="text-muted text-xs block m-t-xs">
+                <%=comment.created_at%>
+              </span>
+            </div>
+            <div class="m-t-sm"><%=comment.content%></div>
+          </div>
+          <%if current_user == User.find_by(image: comment.user_profile_image)%>
+          <%=button_to "Delete", delete_comment_path(post_id:comment.post_id, id: comment.id ), method: :delete, data: {confirm: "Are you sure you want to delete your comment?"}, class: "btn btn-danger", form: {style: 'display:inline-block;'}%>
+          <%end%>
+        </div>
+      </div>
     <br>
     <%end%>
-  </div>
 
-  <div class="">
-    <img src="<%=current_user.image%>" style='width:50px; height:50px; float: left'>
-    <%= form_for :comment, url: post_comment_path(post) do |f| %>
-      <%=f.text_field :content, :placeholder => "Leave your comment"%>
-      <%=f.submit "Comment", class: "btn btn-primary"%>
-    <%end%>
+    <div class="">
+      <h4 class="m-t-lg m-b">Leave a comment</h4>
+      <img src="<%=current_user.image%>" style='width:50px; height:50px; float: left'>
+      <%= form_for :comment, url: post_comment_path(post) do |f| %>
+      <div class="col-sm-6">
+        <%=f.text_field :content, class: "form-control", :placeholder => "Leave your comment" %>
+      </div>
+        <%=f.submit "Comment", class: "btn btn-success"%>
+      <%end%>
+      </div>
+      </div>
+    <% end %>
+    </div>
   </div>
-</div>
-  <% end %>
-</div>
