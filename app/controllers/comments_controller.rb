@@ -5,7 +5,13 @@ class CommentsController < ApplicationController
     post.comments.create(content: comment_params[:content], user_profile_image: current_user.image)
     redirect_to city_path(city)
   end
-
+  def destroy
+    comment = Comment.find_by_id(params[:id])
+    post =  Post.find_by_id(params[:post_id])
+    city =City.find_by_id(post.city_id)
+    comment.destroy
+    redirect_to city_path(city) 
+  end
   private
   def comment_params
     params.require(:comment).permit(:content);
