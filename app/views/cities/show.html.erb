@@ -9,7 +9,7 @@
       <div class="container">
         <br>
       <%=button_to "Add New Post", new_post_path, method: :get, class: "btn btn-danger pull-right form: {style: 'display:inline-block;'}"%>
-      <%=button_to "Go Back to Profile", user_path, method: :get, class: "btn btn-info pull-right form: {style: 'display:inline-block;'}"%>
+      <%=button_to "Go Back to Profile", user_path(current_user), method: :get, class: "btn btn-info pull-right form: {style: 'display:inline-block;'}"%>
       <select name="select" id="soflow" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
         <% @cities.each do |city| %>
           <%if city.id == request.original_url.split("/")[-1].to_i%>
@@ -29,14 +29,18 @@
         <% @posts.each do |post| %>
         <div class="panel">
           <div class="wrapper-lg">
-            <h2 class="m-t-none"><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></h2>
-            <div><p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more"%></p></div>
+            <div class="row" style="">
+
+            <h1 class="m-t-none"><b><%= link_to post.title, post_path(user_id: post.user_id, id: post.id) %></b></h1>
+            <div><p><%= post.content.split(" ")[0..50].join(" ") + "..."%><%=link_to "Read more", post_path(user_id: post.user_id, id: post.id)%></p></div>
             <div class="line line-lg b-b b-light"></div>
             <div class="text-muted">
               <i class="fa fa-user text-muted"></i> by <%= post.user.name %>
               <i class="fa fa-clock-o text-muted"></i>  <%= post.created_at %>
               <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> <%=post.comments.count%> comments</a>
             </div>
+          </div>
+
     <h4 class="m-t-lg m-b">Comments</h4>
       <div>
         <%post.comments.each do |comment|%>
@@ -72,6 +76,8 @@
       <%end%>
       </div>
       </div>
-    <% end %>
     </div>
+    <hr>
+    <% end %>
   </div>
+</div>

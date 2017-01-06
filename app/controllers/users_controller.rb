@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order("created_at desc")
   end
 
   def edit
