@@ -10,6 +10,8 @@
 
 <%= render partial: 'users/partials/user_info', locals: {user: @user} %>
 
+<%=button_to "Go Back to Profile", user_path, method: :get, class: "btn btn-info pull-right form: {style: 'display:inline-block;'}"%>
+<%=button_to "Explore Cities", city_path(City.first), method: :get, class: "btn btn-info"%>
 
 <div class="wrapper-md">
   <div class="row">
@@ -25,7 +27,6 @@
           <div class="text-muted">
             <i class="fa fa-user text-muted"></i> by <%= @user.name %>
             <i class="fa fa-clock-o text-muted"></i>  <%= @user.created_at %>
-            <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> 4 comments</a>
           </div>
         </div>
       </div>
