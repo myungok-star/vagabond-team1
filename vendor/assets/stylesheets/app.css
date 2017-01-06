@@ -850,6 +850,7 @@ body {
 
 #header{
   background: #fff;
+  height: 90px;
   z-index: 0;
 }
 
