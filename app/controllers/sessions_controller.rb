@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  include UsersHelper
+  before_action :if_logged_in, except: [:destroy]
   def index
   end
 
@@ -26,7 +27,7 @@ class SessionsController < ApplicationController
 end
 
 def destroy
-  session[:user_id] = nil
+  current_user = session[:user_id] = nil
   redirect_to '/login'
 end
 
