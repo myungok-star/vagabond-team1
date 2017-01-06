@@ -21,6 +21,10 @@ module UsersHelper
     end
   end
 
+  def reset_flash
+    flash[:error] = ""
+  end
+
   private
   def flash_message
     flash[:error] = "You have to log in first!"
