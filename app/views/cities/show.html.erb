@@ -4,16 +4,12 @@
 <br>
 <br>
 
-
-
   <div class="row" style="height: 400px; background-image: url(<%= @city.image %>); background-position: center; background-size: cover">
-    <h1 class="city-name"><%=@city.name%></h1>
     <div class="navbar div-footer">
       <div class="container">
         <br>
       <%=button_to "Add New Post", new_post_path, method: :get, class: "btn btn-danger pull-right form: {style: 'display:inline-block;'}"%>
-      </div>
-
+      <%=button_to "Go Back to Profile", user_path, method: :get, class: "btn btn-info pull-right form: {style: 'display:inline-block;'}"%>
       <select name="select" onChange="window.location.href = '/cities/' + this.options[this.selectedIndex].value">
         <% @cities.each do |city| %>
           <%if city.id == request.original_url.split("/")[-1].to_i%>
@@ -23,12 +19,13 @@
           <%end%>
         <% end %>
       </select>
+      </div>
     </div>
   </div>
 
   <div class="wrapper-md">
     <div class="row">
-      <div class="col-sm-8 offset-2">
+      <div class="col-sm-12 offset-2">
         <% @posts.each do |post| %>
         <div class="panel">
           <div class="wrapper-lg">
@@ -40,7 +37,6 @@
               <i class="fa fa-clock-o text-muted"></i>  <%= post.created_at %>
               <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> <%=post.comments.count%> comments</a>
             </div>
-
     <h4 class="m-t-lg m-b">Comments</h4>
       <div>
         <%post.comments.each do |comment|%>
