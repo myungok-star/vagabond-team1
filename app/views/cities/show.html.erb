@@ -41,8 +41,9 @@
     <div class="row">
       <img src="<%=comment.user_profile_image%>" style='width:50px; height:50px; float: left'>
       <p><%=comment.content%></p>
+      <%if current_user == User.find_by(image: comment.user_profile_image)%>
       <%=button_to "Delete", delete_comment_path(post_id:comment.post_id, id: comment.id ), method: :delete, data: {confirm: "Are you sure you want to delete your comment?"}, class: "btn btn-danger", form: {style: 'display:inline-block;'}%>
-
+      <%end%>
     </div>
     <br>
     <%end%>
